@@ -1,0 +1,22 @@
+---
+# tasks file for etc-git
+- name: Be sure Git is installed
+  package:
+    name: git
+
+- name: Check if Git repo already exists
+  stat:
+    path: /etc/.git
+  register: gitRepo
+
+- name: Add .gitignore from template
+  template:
+    src: templates/gitignore.j2
+    dest: /etc/.gitignore
+    mode: 0644
+    backup: no
+
+- name: Create Git repository and make first commit
+  shell: cd /etc && git init . && git add . && git commit -m "initial commit"
+  when: gitRepo.stat.isdir is not defined
+...
