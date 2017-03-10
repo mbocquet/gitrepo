@@ -37,9 +37,11 @@ galaxy_info:
     - wheezy
 
   galaxy_tags:
+    - config
     - etc
     - git
     - repository
+    - sysadmin
     - system
 
 dependencies: []
