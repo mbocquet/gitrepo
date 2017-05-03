@@ -21,12 +21,14 @@ Example Playbook
 ----------------
 
     - hosts: servers
+      become: yes
       roles:
          - mbocquet.etc-git
 
 or
 
     - hosts: servers
+      become: yes
       roles:
          - { role: mbocquet.etc-git, x: 42 }
 
