@@ -28,7 +28,7 @@ or
       roles:
          - { role: mbocquet.etc-git, x: 42 }
 
-if any variables comes in the future fot this role
+if any variables comes in the future fot this role.
 
 ## License
 
