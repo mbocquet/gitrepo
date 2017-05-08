@@ -2,23 +2,19 @@
 
 Configure a GIT repository in /etc to track configuration changes.
 
-Requirements
-------------
+## Requirements
 
 None.
 
-Role Variables
---------------
+## Role Variables
 
 None.
 
-Dependencies
-------------
+## Dependencies
 
 None.
 
-Example Playbook
-----------------
+## Example Playbook
 
     - hosts: servers
       become: yes
@@ -34,12 +30,10 @@ or
 
 if any variables comes in the future fot this role
 
-License
--------
+## License
 
 GPLv3
 
-Author Information
-------------------
+## Author Information
 
 http://www.sekoya.org
