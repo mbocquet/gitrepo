@@ -1,22 +1,51 @@
 ---
 # tasks file for etc-git
-- name: Be sure Git is installed
+- name: Package
   package:
     name: git
+  tags:
+    - etc-git
+    - package
 
-- name: Check if Git repo already exists
+- name: Check if repo already exists
   stat:
     path: /etc/.git
   register: gitRepo
+  tags:
+    - etc-git
+    - check
 
-- name: Add .gitignore from template
+- name: .gitignore
   template:
     src: templates/gitignore.j2
     dest: /etc/.gitignore
     mode: 0644
     backup: no
+  tags:
+    - etc-git
+    - gitignore
 
-- name: Create Git repository and make first commit
-  shell: cd /etc && git init . && git add . && git commit -m "initial commit"
+- name: Create repository and add files
+  shell: cd /etc && git init . && git add .
   when: gitRepo.stat.isdir is not defined
+  tags:
+    - etc-git
+    - create
+
+- name: Configure user.email
+  git_config:
+    name: user.email
+    repo: /etc
+    scope: local
+    value: "root@{{ ansible_hostname }}"
+  tags:
+    - etc-git
+    - configure
+
+- name: First commit
+  shell: cd /etc && git commit -m "initial commit"
+  when: gitRepo.stat.isdir is not defined
+  tags:
+    - etc-git
+    - commit
 ...
