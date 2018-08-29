@@ -8,25 +8,29 @@ None.
 
 ## Role Variables
 
-None.
+etc_git_dotgitignore : list of files/folders to ignore.
+
+See defaults/main.yml for an example. This variable should not be modified there but defined elsewhere in group_vars/ of host_vars/ files.
 
 ## Dependencies
 
 None.
 
+## Install this role as submodule in a git repository
+
+`git submodule add https://github.com/mbocquet/etc-git.git roles/etc-git`
+
 ## Example Playbook
 
     - hosts: servers
-      become: yes
       roles:
-         - mbocquet.etc-git
+         - etc-git
 
 or
 
     - hosts: servers
-      become: yes
       roles:
-         - { role: mbocquet.etc-git, x: 42 }
+         - { role: etc-git, x: 42 }
 
 if any variables comes in the future fot this role.
 
