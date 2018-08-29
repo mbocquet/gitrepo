@@ -1,13 +1,13 @@
 ---
 # tasks file for etc-git
-- name: Package
+- name: "package"
   package:
     name: git
   tags:
     - etc-git
     - package
 
-- name: Check if repo already exists
+- name: "check if repo already exists"
   stat:
     path: /etc/.git
   register: gitRepo
@@ -15,9 +15,9 @@
     - etc-git
     - check
 
-- name: .gitignore
+- name: ".gitignore"
   template:
-    src: templates/gitignore.j2
+    src: gitignore.j2
     dest: /etc/.gitignore
     mode: 0644
     backup: no
@@ -25,14 +25,14 @@
     - etc-git
     - gitignore
 
-- name: Create repository and add files
+- name: "create repository and add files"
   shell: cd /etc && git init . && git add .
   when: gitRepo.stat.isdir is not defined
   tags:
     - etc-git
     - create
 
-- name: Configure user.email
+- name: "configure user.email"
   git_config:
     name: user.email
     repo: /etc
@@ -42,7 +42,7 @@
     - etc-git
     - configure
 
-- name: First commit
+- name: "first commit"
   shell: cd /etc && git commit -m "initial commit"
   when: gitRepo.stat.isdir is not defined
   tags:
