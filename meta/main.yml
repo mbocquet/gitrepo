@@ -2,6 +2,7 @@ galaxy_info:
   author: Mathias BOCQUET
   description: Configure a GIT repository in /etc to track configuration changes.
   company: Sekoya.org
+  issue_tracker_url: https://git.sekoya.org/mb/etc-git/issues
   license: GPLv3
   min_ansible_version: 1.2
   platforms:
@@ -10,13 +11,6 @@ galaxy_info:
     - all
   - name: Ubuntu
     versions:
-  #  - all
-  #  - lucid
-  #  - maverick
-  #  - natty
-  #  - oneiric
-  #  - precise
-  #  - quantal
     - raring
     - saucy
     - trusty
@@ -27,12 +21,9 @@ galaxy_info:
     - yakkety
   - name: Debian
     versions:
-  #  - all
-  #  - etch
+    - buster
     - jessie
-  #  - lenny
     - sid
-  #  - squeeze
     - stretch
     - wheezy
 

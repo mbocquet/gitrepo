@@ -18,7 +18,7 @@ None.
 
 ## Install this role as submodule in a git repository
 
-`git submodule add https://github.com/mbocquet/etc-git.git roles/etc-git`
+`git submodule add https://git.sekoya.org/mb/etc-git.git roles/etc-git`
 
 ## Example Playbook
 
