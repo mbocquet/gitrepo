@@ -38,6 +38,8 @@
     repo: /etc
     scope: local
     value: "root@{{ ansible_hostname }}"
+  when:
+    - ansible_check_mode == False
   tags:
     - etc-git
     - configure
