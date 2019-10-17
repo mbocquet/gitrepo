@@ -20,7 +20,7 @@
     src: gitignore.j2
     dest: /etc/.gitignore
     mode: 0644
-    backup: no
+    backup: false
   tags:
     - etc-git
     - gitignore
