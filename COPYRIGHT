@@ -1,19 +1,19 @@
-'etc-git'. Ansible role which configures a GIT repository in /etc to track
+'gitrepo'. Ansible role which configures a GIT repository in /etc to track
 configuration changes.
 
 Copyright © 2017-2019 Mathias Bocquet (mbocquet@sekoya.org)
 
-This file is part of 'etc-git' Ansible role.
+This file is part of 'gitrepo' Ansible role.
 
-This 'etc-git' Ansible role is free software: you can redistribute it and/or
+This 'gitrepo' Ansible role is free software: you can redistribute it and/or
 modify it under the terms of the GNU Affero General Public License as published
 by the Free Software Foundation, either version 3 of the License, or (at your
 option) any later version.
 
-This 'etc-git' Ansible role is distributed in the hope that it will be useful,
+This 'gitrepo' Ansible role is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
 or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License
 for more details.
 
 You should have received a copy of the GNU Affero General Public License along
-with this 'etc-git' Ansible role. If not, see <http://www.gnu.org/licenses/>.
+with this 'gitrepo' Ansible role. If not, see <http://www.gnu.org/licenses/>.

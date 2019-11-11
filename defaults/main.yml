@@ -1,12 +1,11 @@
 ---
-# defaults file for etc-git
+# defaults file for gitrepo
 
-# etc_git_dotgitignore : git ignored patterns in /etc. This variable is used to
-# build /etc/.gitignore. You should leave this file unchanged and define the
-# variable elsewhere in Ansible, ie : in group_vars/* or host_vars/* files for
-# example
+# gitrepo_dotgitignore : git ignored patterns. This variable is used to build
+# .gitignore. You should leave this file unchanged and define the variable
+# elsewhere in Ansible, ie : in group_vars/* or host_vars/* files for example.
 
-etc_git_dotgitignore:
+gitrepo_dotgitignore:
   - "*.swp"
   - "*~"
   - ".fstab"

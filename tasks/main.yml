@@ -1,52 +1,52 @@
 ---
-# tasks file for etc-git
-- name: "package"
+# tasks file for gitrepo
+- name: package
   package:
     name: git
   tags:
-    - etc-git
+    - gitrepo
     - package
 
-- name: "check if repo already exists"
+- name: check if repo already exists
   stat:
-    path: /etc/.git
+    path: '{{ gitrepo_folder }}/.git'
   register: gitRepo
   tags:
-    - etc-git
+    - gitrepo
     - check
 
-- name: ".gitignore"
+- name: .gitignore
   template:
     src: gitignore.j2
-    dest: /etc/.gitignore
+    dest: '{{ gitrepo_folder }}/.gitignore'
     mode: 0644
     backup: false
   tags:
-    - etc-git
+    - gitrepo
     - gitignore
 
-- name: "create repository and add files"
-  shell: cd /etc && git init . && git add .
+- name: create repository and add files
+  shell: 'cd {{ gitrepo_folder }} && git init . && git add .'
   when: gitRepo.stat.isdir is not defined
   tags:
-    - etc-git
+    - gitrepo
     - create
 
-- name: "configure user.email"
+- name: configure user.email
   git_config:
     name: user.email
-    repo: /etc
+    repo: '{{ gitrepo_folder }}'
     scope: local
     value: "root@{{ ansible_hostname }}"
   when: not ansible_check_mode
   tags:
-    - etc-git
+    - gitrepo
     - configure
 
-- name: "first commit"
-  shell: cd /etc && git commit -m "initial commit"
+- name: initial commit
+  shell: 'cd {{ gitrepo_folder }} && git commit -m "initial commit"'
   when: gitRepo.stat.isdir is not defined
   tags:
-    - etc-git
+    - gitrepo
     - commit
 ...
