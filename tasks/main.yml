@@ -3,6 +3,7 @@
 - name: package
   package:
     name: git
+    update_cache: true
   tags:
     - gitrepo
     - package
