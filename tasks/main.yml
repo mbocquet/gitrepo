@@ -11,7 +11,7 @@
 - name: check if repo already exists
   stat:
     path: '{{ gitrepo_folder }}/.git'
-  register: gitRepo
+  register: gitrepo
   tags:
     - gitrepo
     - check
@@ -28,7 +28,7 @@
 
 - name: create repository and add files
   shell: 'cd {{ gitrepo_folder }} && git init . && git add .'
-  when: gitRepo.stat.isdir is not defined
+  when: gitrepo.stat.isdir is not defined
   tags:
     - gitrepo
     - create
@@ -46,8 +46,7 @@
 
 - name: initial commit
   shell: 'cd {{ gitrepo_folder }} && git commit -m "initial commit"'
-  when: gitRepo.stat.isdir is not defined
+  when: gitrepo.stat.isdir is not defined
   tags:
     - gitrepo
     - commit
-...
