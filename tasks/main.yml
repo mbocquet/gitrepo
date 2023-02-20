@@ -16,12 +16,17 @@
     - gitrepo
     - check
 
+- name: package_facts
+  ansible.builtin.package_facts:
+    manager: auto
+
 - name: .gitignore
   template:
     src: gitignore.j2
     dest: '{{ gitrepo_folder }}/.gitignore'
     mode: 0644
     backup: false
+  when: "not 'etckeeper' in ansible_facts.packages"
   tags:
     - gitrepo
     - gitignore
