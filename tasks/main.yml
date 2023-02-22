@@ -39,7 +39,7 @@
     - create
 
 - name: configure user.email
-  git_config:
+  community.general.git_config:
     name: user.email
     repo: '{{ gitrepo_folder }}'
     scope: local
