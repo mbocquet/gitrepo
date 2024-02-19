@@ -1,7 +1,7 @@
 'gitrepo'. Ansible role which configures a GIT repository in /etc to track
 configuration changes.
 
-Copyright © 2017-2023 Mathias Bocquet (mbocquet@sekoya.org)
+Copyright © 2017-2024 Mathias Bocquet (mbocquet@sekoya.org)
 
 This file is part of 'gitrepo' Ansible role.
 
