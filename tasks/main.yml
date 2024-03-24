@@ -19,6 +19,9 @@
 - name: package_facts
   ansible.builtin.package_facts:
     manager: auto
+  tags:
+    - gitrepo
+    - facts
 
 - name: .gitignore
   template:
