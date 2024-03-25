@@ -1,22 +1,22 @@
 ---
 # tasks file for gitrepo
-- name: package
-  package:
+- name: Package
+  ansible.builtin.package:
     name: git
     update_cache: true
   tags:
     - gitrepo
     - package
 
-- name: check if repo already exists
-  stat:
-    path: '{{ gitrepo_folder }}/.git'
+- name: Check repo existence
+  ansible.builtin.stat:
+    path: "{{ gitrepo_folder }}/.git"
   register: gitrepo
   tags:
     - gitrepo
     - check
 
-- name: package_facts
+- name: Package_facts
   ansible.builtin.package_facts:
     manager: auto
   tags:
@@ -24,9 +24,9 @@
     - facts
 
 - name: .gitignore
-  template:
+  ansible.builtin.template:
     src: gitignore.j2
-    dest: '{{ gitrepo_folder }}/.gitignore'
+    dest: "{{ gitrepo_folder }}/.gitignore"
     mode: 0644
     backup: false
   when: "not 'etckeeper' in ansible_facts.packages"
@@ -34,17 +34,20 @@
     - gitrepo
     - gitignore
 
-- name: create repository and add files
-  shell: 'cd {{ gitrepo_folder }} && git init . && git add .'
+- name: Create repository and add files
+  ansible.builtin.shell:
+    'cd {{ gitrepo_folder }} && git init . && git add .'
+  register: init
   when: gitrepo.stat.isdir is not defined
+  changed_when: "'Initialized' in init.stdout"
   tags:
     - gitrepo
     - create
 
-- name: configure user.email
+- name: Configure user.email
   community.general.git_config:
     name: user.email
-    repo: '{{ gitrepo_folder }}'
+    repo: "{{ gitrepo_folder }}"
     scope: local
     value: "root@{{ ansible_hostname }}"
   when: not ansible_check_mode
@@ -52,9 +55,12 @@
     - gitrepo
     - configure
 
-- name: initial commit
-  shell: 'cd {{ gitrepo_folder }} && git commit -m "initial commit"'
+- name: Initial commit
+  ansible.builtin.shell:
+    'cd {{ gitrepo_folder }} && git commit -m "initial commit"'
+  register: commit
   when: gitrepo.stat.isdir is not defined
+  changed_when: "'create' in commit.stdout"
   tags:
     - gitrepo
     - commit
