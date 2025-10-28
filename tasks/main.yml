@@ -27,7 +27,7 @@
   ansible.builtin.template:
     src: gitignore.j2
     dest: "{{ gitrepo_folder }}/.gitignore"
-    mode: 0644
+    mode: "0644"
     backup: false
   when: "not 'etckeeper' in ansible_facts.packages"
   tags:
