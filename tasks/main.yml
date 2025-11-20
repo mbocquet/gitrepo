@@ -36,7 +36,7 @@
 
 - name: Create repository and add files
   ansible.builtin.shell:
-    'cd {{ gitrepo_folder }} && git init . && git add .'
+    cd {{ gitrepo_folder }} && git init . && git add .
   register: init
   when: gitrepo.stat.isdir is not defined
   changed_when: "'Initialized' in init.stdout"
@@ -57,7 +57,7 @@
 
 - name: Initial commit
   ansible.builtin.shell:
-    'cd {{ gitrepo_folder }} && git commit -m "initial commit"'
+    cd {{ gitrepo_folder }} && git commit -m "initial commit"
   register: commit
   when: gitrepo.stat.isdir is not defined
   changed_when: "'create' in commit.stdout"
