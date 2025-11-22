@@ -29,7 +29,7 @@
     dest: "{{ gitrepo_folder }}/.gitignore"
     mode: "0644"
     backup: false
-  when: "not 'etckeeper' in ansible_facts.packages"
+  when: not 'etckeeper' in ansible_facts.packages
   tags:
     - gitrepo
     - gitignore
@@ -49,7 +49,7 @@
     name: user.email
     repo: "{{ gitrepo_folder }}"
     scope: local
-    value: "root@{{ ansible_hostname }}"
+    value: root@{{ ansible_hostname }}
   when: not ansible_check_mode
   tags:
     - gitrepo
